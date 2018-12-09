@@ -100,10 +100,10 @@ $('#refresh_filter').click(function () {
    //console.log(window.location = $(this).data('url'));
     $.ajax({
         url : window.location.href+"/search_with_date",
-        method : "POST",
-        data : {from_tanggal:from_tanggal,to_tanggal:to_tanggal},
-        contentType: "application/json; charset=utf-8",//ini tambhan aja
+        type : "POST",
         datatype : "json",
+        data : {"from_tanggal":from_tanggal,"to_tanggal":to_tanggal},
+        // contentType: "application/json; charset=utf-8", perintah ini menyebabkan data yag dikirim ke php null
         success:function(data){
             alert("berhasil");
         }, error: function (errormessage) {

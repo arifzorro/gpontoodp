@@ -19,21 +19,28 @@ class Data extends MY_Controller {
     public function index() {
 
         if ($this->input->is_ajax_request()) {
+            //echo "akses";
             $from_tgl   = $this->input->post('from_tgl');
             $to_tgl     = $this->input->post('to_tgl');
             $filter = (object) array(
                 'from_tgl' => !empty_or_null($from_tgl) ? set_date($from_tgl) : null,
                 'to_tgl' => !empty_or_null($to_tgl) ? set_date($to_tgl) : (!empty_or_null($from_tgl) ? set_date($from_tgl) : null),
             );
+           // var_dump($this->data_gpon_model->get_all_dt($filter));
             return print_r($this->data_gpon_model->get_all_dt($filter));
         } else {
             $this->render('data/index');
         }
     }
     public function search_with_date(){
+        $from_tanggal= $this->input->post('from_tanggal'); //menangkap data yang dikirimkan melalui ajax ke php yg awalnya data terebut didapatkan melalui inputan form html
+        $to_tanggal= $this->input->post('to_tanggal');
+
+
+        //var_dump($account);
         //$text1=$this->input->post('from_tgl');
        // $text1 = $_POST['from_tanggal'];
-        dd($text1);
+//        dd($text1);
 
     }
 
