@@ -30,6 +30,12 @@ class Data extends MY_Controller {
             $this->render('data/index');
         }
     }
+    public function search_with_date(){
+        //$text1=$this->input->post('from_tgl');
+       // $text1 = $_POST['from_tanggal'];
+        dd($text1);
+
+    }
 
     public function create() {
         $this->data['vendor'] = $this->vendor_model->get(1);

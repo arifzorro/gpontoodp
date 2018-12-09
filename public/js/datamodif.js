@@ -81,6 +81,42 @@ $('body').on('click', '.action_btn_delete', function () {
         });
 });
 
-$('.refresh_filter_data').click(function () {
-    table.ajax.reload();
-});
+// $('.refresh_filter_data').click(function () {
+//     table.ajax.reload();
+// });
+
+$('#refresh_filter').click(function () {
+    var from_tanggal=$('.from_tgl').val();
+    var to_tanggal=$('.to_tgl').val();
+    console.log(window.location.href);
+    // "ajax": {
+    //     "url": window.location.href,
+    //         "type": "POST",
+    //         "data": function (d) {
+    //
+    //     }
+    // }
+   // alert(1);
+   //console.log(window.location = $(this).data('url'));
+    $.ajax({
+        url : window.location.href+"/search_with_date",
+        method : "POST",
+        data : {from_tanggal:from_tanggal,to_tanggal:to_tanggal},
+        contentType: "application/json; charset=utf-8",//ini tambhan aja
+        datatype : "json",
+        success:function(data){
+            alert("berhasil");
+        }, error: function (errormessage) {
+            alert("eror");
+        }
+    });
+    });
+
+// });
+
+// $('body').on('click', '.refresh_filter_data', function () {
+//     alert(1);
+//     console.log('tes');
+    // window.location = $(this).data('url');
+    //console.log("tes doank".window.location);
+// });
